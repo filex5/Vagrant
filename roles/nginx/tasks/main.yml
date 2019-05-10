@@ -1,0 +1,53 @@
+- name: Add repository Nginx
+  yum_repository:
+    name: nginx
+    description: Nginx
+    baseurl: http://nginx.org/packages/centos/$releasever/$basearch/
+    gpgkey: https://nginx.org/keys/nginx_signing.key
+    gpgcheck: yes
+- name: Install Nginx
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - nginx
+      - policycoreutils-python
+- name: Create Directory robertfil.pl
+  file:
+    path: /var/www/robertfil.pl
+    state: directory
+#- name: Generate dhparams file
+#  shell: openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
+#- name: Copy site conf file
+#  copy:
+#    src: files/nginx.conf
+#    dest: /etc/nginx/conf.d/default.conf
+- name: Add https nginx configuration
+  template: src=service.http.conf.j2 dest=/etc/nginx/conf.d/default.conf owner=nginx group=nginx mode=0644
+#- name: Add https nginx configuration
+#  template: src=service.https.conf.j2 dest=/etc/nginx/conf.d/ssl.conf owner=nginx group=nginx mode=0644
+- name: Copy web-site
+  copy:
+    src: robertfil.pl
+    dest: /var/www/
+    owner: nginx
+    group: nginx
+    mode: u=rw,g=r,o=r
+- name: Allow Nginx to listen on tcp port 80
+  seport:
+    ports: 80
+    proto: tcp
+    setype: http_port_t
+    state: present
+- name: Allow SElinux policy to web files
+  sefcontext:
+    target: '/var/www/robertfil.pl(/.*)?'
+    setype: httpd_sys_content_t
+    state: present
+- name: Apply new SELinux file context to filesystem
+  command: restorecon -irv /var/www/robertfil.pl
+- name: Restart nginx
+  service:
+    name: nginx
+    state: restarted
+

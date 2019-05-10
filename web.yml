@@ -1,0 +1,13 @@
+- name: Depoly website
+  hosts: all
+  become: true
+  gather_facts: yes
+# Roles  
+  roles:
+    - nginx   
+# Vars
+  vars:
+    service_host: localhost
+    
+  
+    
