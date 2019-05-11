@@ -17,7 +17,7 @@
                 $connection = mysqli_connect("192.168.100.20", "root", "test1995test", "komis");
     
                 $sql = "SELECT `id`, `marka`, `model` FROM `samochody`";
-                $result = mysqli_querry($connection, $sql);
+                $result = mysqli_query($connection, $sql);
 
                 while($rows = mysqli_fetch_row($result)) {
                 echo '<li>'.$rows[0].' '.$rows[1].' '.$rows[2].'</li>';
@@ -34,7 +34,7 @@
                 $connection = mysqli_connect("192.168.100.20", "root", "test1995test", "komis");
 
                 $sql = "SELECT `Samochody_id`, `Klient` FROM `zamowienia`";
-                $result = mysqli_querry($connection, $sql);
+                $result = mysqli_query($connection, $sql);
 
                 while($rows = mysqli_fetch_row($result)) {
                 echo '<li>'.$rows[0].' '.$rows[1].'</li>';
@@ -52,7 +52,7 @@
                 $connection = mysqli_connect("192.168.100.20", "root", "test1995test", "komis");
 
                 $sql = 'SELECT * FROM `samochody` WHERE `marka` = "Fiat"';
-                $result = mysqli_querry($connection, $sql);
+                $result = mysqli_query($connection, $sql);
 
                 while($rows = mysqli_fetch_row($result)) {
                 echo $rows[0].' / '.$rows[1].' / '.$rows[2].' / '.$rows[3].' / '.$rows[4].' / '.$rows[5].'<br />';
@@ -65,8 +65,8 @@
             <table>
                 <tbody>
                     <tr>
-                        <td><a href="kwerendy.txt"></td>
-                        <td><p>Autor</p><p>906660666</p></td>
+                        <td><a href="kwerendy.txt">Kwerendy</a></td>
+                        <td><p>Autor: 906660666</p></td>
                         <td><img src="auto.png" alt="komis samochodowy"></td>
                     </tr>
                 </tbody>
