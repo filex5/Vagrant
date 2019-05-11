@@ -1,0 +1,2 @@
+192.168.100.1
+GRANT ALL ON komis.* TO root@192.168.100.10 IDENTIFIED BY 'test1995test';

@@ -1,0 +1,44 @@
+*{
+    padding:0;
+    margin:0;
+    
+}
+header{
+    background-color: #45517D;
+    color: white;
+    font-size: 120%;
+    text-align: right;
+    height: 60px;
+}
+div.left{
+    background-color: #61B2EC;
+    width: 40%;
+    height: 500px;
+    float:left;
+    text-align: left;
+    color: black;
+        
+}
+div.right{
+    background-color: #8EC9F2;
+    text-align: left;
+    width: 60%;
+    height: 500px; 
+    float: left;   
+    color: black;
+}
+footer{
+    background-color: #45517D;
+    font-size: 150%;
+    text-align: center;
+    
+}
+footer a:link {
+    color: orange;
+  }
+footer a:visited {
+    color: green;
+  }
+footer table {
+    width: 100%;
+}

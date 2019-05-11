@@ -26,8 +26,9 @@ Vagrant.configure("2") do |config|
     sudo systemctl enable php72-php-fpm.service
     sudo systemctl start php72-php-fpm.service
     sudo yum install ansible -y
-    #sudo systemctl enable nginx
-    #sudo systemctl start nginx
+    yum install mariadb -y
+    sudo systemctl enable nginx
+    sudo systemctl start nginx
 SHELL
   end
     config.vm.provision "ansible" do |ansible|
