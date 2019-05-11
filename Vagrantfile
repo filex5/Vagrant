@@ -26,6 +26,8 @@ Vagrant.configure("2") do |config|
     sudo systemctl enable php72-php-fpm.service
     sudo systemctl start php72-php-fpm.service
     sudo yum install ansible -y
+    sudo yum -y install php-mysqlnd php-pdo
+    sudo yum -y install php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-soap curl curl-devel
     yum install mariadb -y
     sudo systemctl enable nginx
     sudo systemctl start nginx

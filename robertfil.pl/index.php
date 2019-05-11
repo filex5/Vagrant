@@ -11,9 +11,9 @@
         <div class="left">
             <h2>Wykaz samochodów</h2>
             <ul>
+                
   
             <?php
-
                 $connection = mysqli_connect("192.168.100.20", "root", "test1995test", "komis");
     
                 $sql = "SELECT `id`, `marka`, `model` FROM `samochody`";
@@ -65,7 +65,7 @@
             <table>
                 <tbody>
                     <tr>
-                        <td><a href="kwerendy.txt">Kwerendy</a></td>
+                        <td><a href="kwerendy.txt"></td>
                         <td><p>Autor: 906660666</p></td>
                         <td><img src="auto.png" alt="komis samochodowy"></td>
                     </tr>
